@@ -41,7 +41,7 @@ pipeline {
         }
 
         stage('Update K8s Manifest') {
-            when { branch 'main' }
+            when { branch 'master' }
             steps {
                 script {
                     withCredentials([usernamePassword(
@@ -55,8 +55,8 @@ pipeline {
                         git config user.email "$GIT_EMAIL"
 
                         git fetch origin
-                        git checkout main
-                        git reset --hard origin/main
+                        git checkout master
+                        git reset --hard origin/master
 
                         sed -i "s|image:.*|image: ${IMAGE_NAME}:${IMAGE_TAG}|" k8s/deployment.yml
 
