@@ -20,7 +20,7 @@ pipeline {
         }
 
         stage('Build and Push Image') {
-            when { branch 'main' }
+            when { branch 'master' }
             steps {
                 script {
                     env.IMAGE_TAG = "build-${BUILD_NUMBER}"
